@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astra GPS - Device Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <header class="landing-header">
+            <div class="container">
+                <nav class="flex justify-between items-center py-16">
+                    <div class="logo">
+                        <h1 class="logo-text">ASTra</h1>
+                    </div>
+                    <div class="nav-actions">
+                        <button class="btn btn--outline btn--sm">Support</button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="landing-main">
+            <div class="container">
+                <section class="hero">
+                    <div class="hero-content-centered">
+                        <div class="another-title">
+                        <img class="another-title-image "src="./image.png"alt="logo">
+                        </div>
+                        <div class="hero-subtitle-class">
+                            <h2 class="hero-subtitle">Automated Speaking Tracker</h2>
+                        </div>
+                        <div class="silver-hero-desc">
+                            <p class="hero-description">
+                                Guiding wearable that gives offline, spoken directions to the nearest Lost & Found center at Ujjain Mahakumbh using GPS and on-device routing for children, elderly, and people with disabilities.
+                            </p>
+                        </div>
+                        <div class="hero-actions">
+                            <button class="btn btn--primary btn--lg get-started-btn" onclick="navigateToSignIn()">
+                                Get Started
+                            </button>
+                            <button class="btn btn--outline btn--lg">Learn More</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="features">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📍</div>
+                            <h3>Real-Time Tracking</h3>
+                            <p>Monitor device locations with precision and instant updates</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon";>🛡️</div>
+                            <h3>Emergency Support</h3>
+                            <p>24/7 emergency contact system for critical situations</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📱</div>
+                            <h3>Device Management</h3>
+                            <p>Complete control over your GPS device fleet</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Sign In Page -->
+    <div id="signin-page" class="page">
+        <div class="signin-container">
+            <div class="signin-card">
+                <div class="signin-header">
+                    <div class="logo">
+                        <h2 class="logo-text">ASTra</h2>
+                    </div>
+                    <h3 class="signin-title" id="auth-title">Sign In to Dashboard</h3>
+                    <p class="signin-subtitle" id="auth-subtitle">Access your GPS device management console</p>
+                </div>
+
+                <!-- Tab Switcher -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="signin-tab" onclick="switchToSignIn()">
+                        Sign In
+                    </button>
+                    <button class="auth-tab" id="signup-tab" onclick="switchToSignUp()">
+                        Create Account
+                    </button>
+                </div>
+
+                <!-- Sign In Form -->
+                <form class="signin-form" id="signin-form" onsubmit="handleSignIn(event)">
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary btn--full-width">Sign In</button>
+                    </div>
+
+                    <div class="signin-footer">
+                        <a href="#" class="forgot-password">Forgot your password?</a>
+                    </div>
+                </form>
+
+                <!-- Sign Up Form -->
+                <form class="signin-form hidden" id="signup-form" onsubmit="handleSignUp(event)">
+                    <div class="form-group">
+                        <label for="new-fullname" class="form-label">Full Name</label>
+                        <input type="text" id="new-fullname" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-email" class="form-label">Email</label>
+                        <input type="email" id="new-email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-username" class="form-label">Username</label>
+                        <input type="text" id="new-username" class="form-control" placeholder="Choose a username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password" class="form-label">Password</label>
+                        <input type="password" id="new-password" class="form-control" placeholder="Create a password" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password" class="form-label">Confirm Password</label>
+                        <input type="password" id="confirm-password" class="form-control" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary btn--full-width">Create Account</button>
+                    </div>
+
+                    <div class="signin-footer">
+                        <p class="terms-text">By creating an account, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+                    </div>
+                </form>
+
+                <div class="signin-actions">
+                    <button class="btn btn--outline btn--sm" onclick="navigateToLanding()">
+                        ← Back to Home
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard-page" class="page">
+        <header class="dashboard-header">
+            <div class="container">
+                <nav class="flex justify-between items-center py-16">
+                    <div class="logo">
+                        <h2 class="logo-text">ASTRA</h2>
+                        <span class="logo-tagline">DASHBOARD</span>
+                    </div>
+                    <div class="user-actions">
+                        <span class="user-welcome">Welcome, <span id="current-user">User</span></span>
+                        <button class="btn btn--outline btn--sm" onclick="navigateToSettings()">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 4px;">
+                                <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.03-.32.07-.64.07-.97c0-.33-.04-.65-.07-.97l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65A.488.488 0 0 0 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.58-1.69.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.03.32-.07.64-.07.97c0 .33.04.65.07.97l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1c.23.08.49 0 .61-.22l2-3.46c.13-.22.07-.49-.12-.64l-2.11-1.65Z"/>
+                            </svg>
+                            Settings
+                        </button>
+                        <button class="btn btn--outline btn--sm" onclick="handleLogout()">Logout</button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="container">
+                <div class="dashboard-controls">
+                    <div class="search-section">
+                        <h2>Device Management</h2>
+                        <div class="search-bar">
+                            <input type="text" id="device-search" class="form-control" 
+                                   placeholder="Search devices by name, ID, or user..." 
+                                   onkeyup="filterDevices()">
+                        </div>
+                    </div>
+                    <div class="stats-section">
+                        <div class="stat-card">
+                            <span class="stat-number" id="active-count">0</span>
+                            <span class="stat-label">Active Devices</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="total-count">0</span>
+                            <span class="stat-label">Total Devices</span>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="map-section">
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <div class="map-header">
+                                <h3>🗺️ GPS Device Locations</h3>
+                                <p>Real-time device tracking map (click markers to view location details)</p>
+                            </div>
+                            <div class="map-grid" id="map-grid">
+                                <!-- GPS location markers will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="devices-section">
+                    <div class="devices-header flex justify-between items-center mb-8">
+                        <h3>Device Fleet</h3>
+                        <div class="filter-options">
+                            <select class="form-control" id="status-filter" onchange="filterDevices()">
+                                <option value="">All Status</option>
+                                <option value="active">Active Only</option>
+                                <option value="inactive">Inactive Only</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="devices-grid" id="devices-grid">
+                        <!-- Device cards will be populated by JavaScript -->
+                    </div>
+                    <div class="map-actions">
+                        <button class="btn btn--secondary" onclick="updateMap()">
+                            🔄 Update Map
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div id="message-overlay" class="message-overlay hidden">
+        <div class="message-content">
+            <p id="message-text"></p>
+            <button class="btn btn--sm" onclick="hideMessage()">Close</button>
+        </div>
+    </div>
+
+    <!-- Confirmation Dialog -->
+    <div id="confirm-dialog" class="message-overlay hidden">
+        <div class="message-content">
+            <p id="confirm-text"></p>
+            <div class="dialog-actions">
+                <button class="btn btn--danger btn--sm" id="confirm-yes">Yes, Delete</button>
+                <button class="btn btn--outline btn--sm" id="confirm-no" onclick="hideConfirmDialog()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Page -->
+    <div id="settings-page" class="page">
+        <header class="dashboard-header">
+            <div class="container">
+                <nav class="flex justify-between items-center py-16">
+                    <div class="logo">
+                        <h2 class="logo-text">ASTRA</h2>
+                        <span class="logo-tagline">SETTINGS</span>
+                    </div>
+                    <div class="user-actions">
+                        <button class="btn btn--outline btn--sm" onclick="navigateToDashboard()">
+                            ← Back to Dashboard
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="settings-main">
+            <div class="container">
+                <div class="settings-container">
+                    <h2 class="settings-title">Settings</h2>
+                    
+                    <!-- Language Settings -->
+                    <div class="settings-section">
+                        <div class="settings-section-header">
+                            <h3>
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 8px; vertical-align: middle;">
+                                    <path d="M12.87 15.07l-2.54-2.51.03-.03c1.12-1.09 2.06-2.18 2.8-3.25.52-.77.91-1.48 1.16-2.13h2.93V5.5H10v-1.65h-2v1.65H.75v1.65h10.96c-.22.49-.53 1.03-.92 1.63-.64.95-1.47 1.95-2.47 2.95L6.4 9.86 5 11.27l3.12 3.08 2 1.97 1.27-1.25zm5.48 2.28h-2l-4.46-11.85h2.09l2.83 7.88 2.84-7.88h2.09l-4.47 11.85z"/>
+                                </svg>
+                                Language
+                            </h3>
+                            <p class="settings-description">Choose your preferred language for the dashboard</p>
+                        </div>
+                        <div class="settings-control">
+                            <select class="form-control" id="language-select" onchange="changeLanguage(this.value)">
+                                <option value="en">English</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                                <option value="ml">മലയാളം (Malayalam)</option>
+                                <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Appearance Settings -->
+                    <div class="settings-section">
+                        <div class="settings-section-header">
+                            <h3>
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 8px; vertical-align: middle;">
+                                    <path d="M12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0-4C6.48 4 2 8.48 2 14s4.48 10 10 10 10-4.48 10-10S17.52 4 12 4zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                </svg>
+                                Appearance
+                            </h3>
+                            <p class="settings-description">Customize the look and feel of your dashboard</p>
+                        </div>
+                        <div class="settings-control">
+                            <div class="appearance-options">
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="light" onchange="changeTheme('light')">
+                                    <span class="theme-label">
+                                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 0 0 0-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+                                        </svg>
+                                        Light
+                                    </span>
+                                </label>
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="dark" onchange="changeTheme('dark')">
+                                    <span class="theme-label">
+                                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.06 7 9.54 0 4.48-2.94 8.27-7 9.54.95.3 1.95.46 3 .46 5.52 0 10-4.48 10-10S14.52 2 9 2z"/>
+                                        </svg>
+                                        Dark
+                                    </span>
+                                </label>
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="auto" onchange="changeTheme('auto')" checked>
+                                    <span class="theme-label">
+                                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18V4c4.41 0 8 3.59 8 8s-3.59 8-8 8z"/>
+                                        </svg>
+                                        Auto
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Info -->
+                    <div class="settings-section">
+                        <div class="settings-section-header">
+                            <h3>
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 8px; vertical-align: middle;">
+                                    <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+                                </svg>
+                                About
+                            </h3>
+                            <p class="settings-description">Information about ASTra GPS Dashboard</p>
+                        </div>
+                        <div class="settings-control">
+                            <div class="about-info">
+                                <div class="about-item">
+                                    <span class="about-label">Version:</span>
+                                    <span class="about-value">4.0.0</span>
+                                </div>
+                                <div class="about-item">
+                                    <span class="about-label">Build:</span>
+                                    <span class="about-value">2025.09.04</span>
+                                </div>
+                                <div class="about-item">
+                                    <span class="about-label">Support:</span>
+                                    <span class="about-value"><a href="mailto:support@astra.com">support@astra.com</a></span>
+                                </div>
+                                <div class="about-item">
+                                    <span class="about-label">Documentation:</span>
+                                    <span class="about-value"><a href="#" onclick="showMessage('Documentation coming soon!', 'info'); return false;">View Docs</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export Data -->
+                    <div class="settings-section">
+                        <div class="settings-section-header">
+                            <h3>
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 8px; vertical-align: middle;">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                                Export Data
+                            </h3>
+                            <p class="settings-description">Download your device data in various formats</p>
+                        </div>
+                        <div class="settings-control">
+                            <div class="export-options">
+                                <button class="btn btn--secondary" onclick="exportData('json')">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 4px;">
+                                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H9V10H15V15L13,19H10Z"/>
+                                    </svg>
+                                    Export as JSON
+                                </button>
+                                <button class="btn btn--secondary" onclick="exportData('csv')">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 4px;">
+                                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H9V10H15V15L13,19H10Z"/>
+                                    </svg>
+                                    Export as CSV
+                                </button>
+                                <button class="btn btn--secondary" onclick="exportData('pdf')">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 4px;">
+                                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H9V10H15V15L13,19H10Z"/>
+                                    </svg>
+                                    Export as PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logout -->
+                    <div class="settings-section">
+                        <div class="settings-section-header">
+                            <h3>
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 8px; vertical-align: middle;">
+                                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                                </svg>
+                                Account
+                            </h3>
+                            <p class="settings-description">Manage your account and session</p>
+                        </div>
+                        <div class="settings-control">
+                            <button class="btn btn--danger" onclick="handleLogout()">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 4px;">
+                                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                                </svg>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Google Maps Modal -->
+    <div id="maps-modal" class="modal-overlay hidden">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h3 id="modal-device-name">Device Location</h3>
+                    <p id="modal-device-info">View real-time location on Google Maps</p>
+                </div>
+                <button class="modal-close-btn" onclick="closeMapModal()" title="Close">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe 
+                    id="google-maps-iframe" 
+                    src="" 
+                    frameborder="0" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
