@@ -12,21 +12,13 @@ Problem Statement: During large-scale events like Mahakumbh, vulnerable individu
 Solution: ASTra provides a comprehensive safety ecosystem featuring voice-guided navigation wearables, mesh network communication, offline map storage, and real-time family tracking through mobile apps and centralized dashboards.
 
 3. Logic & Workflow
-Data Collection:
 
-GPS coordinates captured via GP-02 GPS modules with A-GPS assistance
-
-User activation through button press on wearable device
-
-Emergency signals transmitted across 433MHz transceiver network
-
-Processing:
-
-Graph-based pathfinding using Dijkstra's algorithm on offline stored maps
-
-Haversine formula calculations for nearest Lost & Found center location
-
-LittleFS file system manages map data and OTA updates
+The  pole  devices  which  make  up  our  dense  transceiver  network  take  up  distress  message  to  centres  using  the  established  433MHz  network
+The  ASTra’s  GPS  gets  activated  and  gets  a  quick  lock  using  the  assistance  from  centres  for  rough  location
+The  GPS  with  the  help  of magnetometer  positions  itself as  a  vector  on  our  offline  pre-stored  map  as  a  vector
+Using  pre-defined  algorithm  we  guide  the  person  to  the  nearest  lost&found  centres
+We  use  player  module  to  play  basic  commands  such  as  “walk  straight”, “turn  right”, etc.
+Notification   of  emergency,  location  and  updates gets  sent  also  to  guardian’s  app
 
 Output:
 
@@ -48,18 +40,18 @@ Admin Side:
 
 Centralized dashboard monitoring all active devices
 
-Device management with activation/deactivation controls
-
 OTA map updates and emergency broadcast capabilities
 
 4. Tech Stack
-Frontend: HTML5, CSS, JavaScript (Mobile Apps), React.js (Dashboard)
+Frontend: HTML5, CSS, Swift (Mobile Apps)
 Backend: Node.js + Express, Arduino C++ (Embedded Systems)
-Database: PostgreSQL
+Database: PostgreSQL, MongoDB
 Hardware: ESP32 Devkit, GP-02 GPS Module, DFPlayer Mini Audio Module, 433MHz RF Transceivers
 File System: LittleFS for offline map storage
 Communication: 433MHz mesh network protocol
 Mobile Development: Cross-platform iOS and Android applications
 
 5. Future Scope
-The prototype can be scaled with advanced AI-powered crowd prediction algorithms, integration with smart city infrastructure, and multilingual expansion beyond Hindi and English. Future enhancements include biometric authentication, health monitoring sensors, and deployment across various mass gatherings, festivals, disaster relief scenarios, and institutional safety systems. The mesh network architecture can be adapted for permanent smart city installations, creating a resilient communication backbone for urban emergency management.
+Correction of direction axis’s which is disrupted by the position of wrist
+Large scale implementation and testing of Transceivers.
+Scaling into multilingualism for voice commands
