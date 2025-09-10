@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Landing Page -->
     <div id="landing-page" class="page active">
         <header class="landing-header">
             <div class="container">
@@ -49,17 +48,17 @@
                 <section class="features">
                     <div class="features-grid">
                         <div class="feature-card">
-                            <div class="feature-icon">📍</div>
+                            <div class="feature-icon">ðŸ“</div>
                             <h3>Real-Time Tracking</h3>
                             <p>Monitor device locations with precision and instant updates</p>
                         </div>
                         <div class="feature-card">
-                            <div class="feature-icon";>🛡️</div>
+                            <div class="feature-icon";>ðŸ›¡ï¸</div>
                             <h3>Emergency Support</h3>
                             <p>24/7 emergency contact system for critical situations</p>
                         </div>
                         <div class="feature-card">
-                            <div class="feature-icon">📱</div>
+                            <div class="feature-icon">ðŸ“±</div>
                             <h3>Device Management</h3>
                             <p>Complete control over your GPS device fleet</p>
                         </div>
@@ -69,7 +68,6 @@
         </main>
     </div>
 
-    <!-- Sign In Page -->
     <div id="signin-page" class="page">
         <div class="signin-container">
             <div class="signin-card">
@@ -81,7 +79,6 @@
                     <p class="signin-subtitle" id="auth-subtitle">Access your GPS device management console</p>
                 </div>
 
-                <!-- Tab Switcher -->
                 <div class="auth-tabs">
                     <button class="auth-tab active" id="signin-tab" onclick="switchToSignIn()">
                         Sign In
@@ -91,7 +88,6 @@
                     </button>
                 </div>
 
-                <!-- Sign In Form -->
                 <form class="signin-form" id="signin-form" onsubmit="handleSignIn(event)">
                     <div class="form-group">
                         <label for="username" class="form-label">Username</label>
@@ -111,7 +107,6 @@
                     </div>
                 </form>
 
-                <!-- Sign Up Form -->
                 <form class="signin-form hidden" id="signup-form" onsubmit="handleSignUp(event)">
                     <div class="form-group">
                         <label for="new-fullname" class="form-label">Full Name</label>
@@ -145,14 +140,13 @@
 
                 <div class="signin-actions">
                     <button class="btn btn--outline btn--sm" onclick="navigateToLanding()">
-                        ← Back to Home
+                        â† Back to Home
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Dashboard Page -->
     <div id="dashboard-page" class="page">
         <header class="dashboard-header">
             <div class="container">
@@ -202,11 +196,10 @@
                     <div class="map-container">
                         <div class="map-placeholder">
                             <div class="map-header">
-                                <h3>🗺️ GPS Device Locations</h3>
+                                <h3>ðŸ—ºï¸ GPS Device Locations</h3>
                                 <p>Real-time device tracking map (click markers to view location details)</p>
                             </div>
                             <div class="map-grid" id="map-grid">
-                                <!-- GPS location markers will be populated by JavaScript -->
                             </div>
                         </div>
                     </div>
@@ -224,11 +217,10 @@
                         </div>
                     </div>
                     <div class="devices-grid" id="devices-grid">
-                        <!-- Device cards will be populated by JavaScript -->
                     </div>
                     <div class="map-actions">
                         <button class="btn btn--secondary" onclick="updateMap()">
-                            🔄 Update Map
+                            ðŸ”„ Update Map
                         </button>
                     </div>
                 </section>
@@ -236,7 +228,6 @@
         </main>
     </div>
 
-    <!-- Success/Error Messages -->
     <div id="message-overlay" class="message-overlay hidden">
         <div class="message-content">
             <p id="message-text"></p>
@@ -244,7 +235,6 @@
         </div>
     </div>
 
-    <!-- Confirmation Dialog -->
     <div id="confirm-dialog" class="message-overlay hidden">
         <div class="message-content">
             <p id="confirm-text"></p>
@@ -255,7 +245,6 @@
         </div>
     </div>
 
-    <!-- Settings Page -->
     <div id="settings-page" class="page">
         <header class="dashboard-header">
             <div class="container">
@@ -266,7 +255,7 @@
                     </div>
                     <div class="user-actions">
                         <button class="btn btn--outline btn--sm" onclick="navigateToDashboard()">
-                            ← Back to Dashboard
+                            â† Back to Dashboard
                         </button>
                     </div>
                 </nav>
@@ -278,7 +267,6 @@
                 <div class="settings-container">
                     <h2 class="settings-title">Settings</h2>
                     
-                    <!-- Language Settings -->
                     <div class="settings-section">
                         <div class="settings-section-header">
                             <h3>
@@ -292,20 +280,19 @@
                         <div class="settings-control">
                             <select class="form-control" id="language-select" onchange="changeLanguage(this.value)">
                                 <option value="en">English</option>
-                                <option value="hi">हिन्दी (Hindi)</option>
-                                <option value="mr">मराठी (Marathi)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
-                                <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="te">తెలుగు (Telugu)</option>
-                                <option value="bn">বাংলা (Bengali)</option>
-                                <option value="kn">ಕನ್ನಡ (Kannada)</option>
-                                <option value="ml">മലയാളം (Malayalam)</option>
-                                <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                                <option value="hi">à¤¹à¤¿à¤¨à¥à¤¦à¥€ (Hindi)</option>
+                                <option value="mr">à¤®à¤°à¤¾à¤ à¥€ (Marathi)</option>
+                                <option value="gu">àª—à«àªœàª°àª¾àª¤à«€ (Gujarati)</option>
+                                <option value="ta">à®¤à®®à®¿à®´à¯ (Tamil)</option>
+                                <option value="te">à°¤à±†à°²à±à°—à± (Telugu)</option>
+                                <option value="bn">à¦¬à¦¾à¦‚à¦²à¦¾ (Bengali)</option>
+                                <option value="kn">à²•à²¨à³à²¨à²¡ (Kannada)</option>
+                                <option value="ml">à´®à´²à´¯à´¾à´³à´‚ (Malayalam)</option>
+                                <option value="pa">à¨ªà©°à¨œà¨¾à¨¬à©€ (Punjabi)</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Appearance Settings -->
                     <div class="settings-section">
                         <div class="settings-section-header">
                             <h3>
@@ -349,7 +336,6 @@
                         </div>
                     </div>
 
-                    <!-- About Info -->
                     <div class="settings-section">
                         <div class="settings-section-header">
                             <h3>
@@ -382,7 +368,6 @@
                         </div>
                     </div>
 
-                    <!-- Export Data -->
                     <div class="settings-section">
                         <div class="settings-section-header">
                             <h3>
@@ -417,7 +402,6 @@
                         </div>
                     </div>
 
-                    <!-- Logout -->
                     <div class="settings-section">
                         <div class="settings-section-header">
                             <h3>
@@ -442,7 +426,6 @@
         </main>
     </div>
 
-    <!-- Google Maps Modal -->
     <div id="maps-modal" class="modal-overlay hidden">
         <div class="modal-container" onclick="event.stopPropagation()">
             <div class="modal-header">

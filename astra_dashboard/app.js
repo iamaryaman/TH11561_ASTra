@@ -1,4 +1,4 @@
-// Application State
+
 let currentUser = null;
 let allDevices = [];
 let filteredDevices = [];
@@ -6,7 +6,7 @@ let currentPage = 'landing';
 let currentTheme = 'auto';
 let currentLanguage = 'en';
 
-// Mock Data - now includes users that can be created
+
 let mockUsers = [
     {"username": "admin", "password": "demo123", "fullname": "Admin User", "email": "admin@astra.com"},
     {"username": "manager", "password": "astra2024", "fullname": "Manager User", "email": "manager@astra.com"},
@@ -146,15 +146,15 @@ const devicesData = [
     }
 ];
 
-// Initialize application
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Application initializing...');
     
-    // Initialize data
+    
     allDevices = [...devicesData];
     filteredDevices = [...allDevices];
     
-    // Ensure message overlay is hidden on init
+    
     const messageOverlay = document.getElementById('message-overlay');
     const confirmDialog = document.getElementById('confirm-dialog');
     const mapsModal = document.getElementById('maps-modal');
@@ -169,21 +169,21 @@ document.addEventListener('DOMContentLoaded', function() {
         mapsModal.classList.add('hidden');
     }
     
-    // Setup modal event listeners
+    
     setupModalEventListeners();
     
-    // Show landing page
+    
     showPage('landing');
     console.log('Application initialized successfully');
 });
 
-// Modal Event Listeners Setup
+
 function setupModalEventListeners() {
     try {
         const mapsModal = document.getElementById('maps-modal');
         
         if (mapsModal) {
-            // Close modal when clicking on overlay (background)
+            
             mapsModal.addEventListener('click', function(event) {
                 if (event.target === mapsModal) {
                     closeMapModal();
@@ -195,26 +195,26 @@ function setupModalEventListeners() {
     }
 }
 
-// Page Navigation Functions
+
 function showPage(pageId) {
     try {
         console.log(`Navigating to page: ${pageId}`);
         
-        // Hide all pages first
+        
         const pages = document.querySelectorAll('.page');
         pages.forEach(page => {
             page.classList.remove('active');
             console.log(`Hiding page: ${page.id}`);
         });
         
-        // Show target page
+        
         const targetPage = document.getElementById(`${pageId}-page`);
         if (targetPage) {
             targetPage.classList.add('active');
             currentPage = pageId;
             console.log(`Showing page: ${targetPage.id}`);
             
-            // Initialize page-specific content
+            
             if (pageId === 'dashboard') {
                 initializeDashboard();
             }
@@ -226,7 +226,7 @@ function showPage(pageId) {
     }
 }
 
-// Global navigation functions - ensuring they're available
+
 window.navigateToSignIn = function() {
     try {
         console.log('Navigate to Sign In clicked');
@@ -271,7 +271,7 @@ window.navigateToSettings = function() {
     }
 };
 
-// Authentication Functions
+
 window.handleSignIn = function(event) {
     event.preventDefault();
     
@@ -282,7 +282,7 @@ window.handleSignIn = function(event) {
         
         console.log(`Attempting login with username: ${username}`);
         
-        // Validate credentials against mock data
+        
         const user = mockUsers.find(u => u.username === username && u.password === password);
         
         if (user) {
@@ -315,25 +315,25 @@ window.handleSignUp = function(event) {
         const password = document.getElementById('new-password').value.trim();
         const confirmPassword = document.getElementById('confirm-password').value.trim();
         
-        // Validate passwords match
+        
         if (password !== confirmPassword) {
             showMessage('Passwords do not match. Please try again.', 'error');
             return;
         }
         
-        // Check if username already exists
+        
         if (mockUsers.find(u => u.username === username)) {
             showMessage('Username already exists. Please choose another.', 'error');
             return;
         }
         
-        // Check if email already exists
+        
         if (mockUsers.find(u => u.email === email)) {
             showMessage('Email already registered. Please use another email.', 'error');
             return;
         }
         
-        // Add new user to mockUsers
+        
         const newUser = {
             username: username,
             password: password,
@@ -346,10 +346,10 @@ window.handleSignUp = function(event) {
         
         showMessage('Account created successfully! Please sign in.', 'success');
         
-        // Switch to sign in form
+        
         setTimeout(() => {
             switchToSignIn();
-            // Pre-fill username
+            
             document.getElementById('username').value = username;
             document.getElementById('password').value = '';
         }, 1500);
@@ -401,7 +401,7 @@ window.handleLogout = function() {
     }
 };
 
-// Dashboard Functions
+
 function initializeDashboard() {
     try {
         console.log('Initializing dashboard...');
@@ -410,28 +410,28 @@ function initializeDashboard() {
             return;
         }
         
-        // Update user welcome message
+        
         const currentUserElement = document.getElementById('current-user');
         if (currentUserElement) {
             currentUserElement.textContent = currentUser;
         }
         
-        // Reset filters
+        
         const searchInput = document.getElementById('device-search');
         const statusFilter = document.getElementById('status-filter');
         
         if (searchInput) searchInput.value = '';
         if (statusFilter) statusFilter.value = '';
         
-        // Reset filtered devices
+        
         filteredDevices = [...allDevices];
         
-        // Render initial content
+        
         updateDeviceStats();
         renderDevices();
         renderMapMarkers();
         
-        // Start auto-refresh
+        
         startAutoRefresh();
         console.log('Dashboard initialized successfully');
     } catch (error) {
@@ -454,7 +454,7 @@ function updateDeviceStats() {
     }
 }
 
-// Modal Functions
+
 window.openDeviceLocation = function(deviceId) {
     try {
         console.log(`Opening device location modal for: ${deviceId}`);
@@ -474,15 +474,15 @@ window.openDeviceLocation = function(deviceId) {
             return;
         }
         
-        // Update modal content
-        deviceNameElement.textContent = device.deviceName;
-        deviceInfoElement.textContent = `${device.userName} • ${device.id} • ${device.status.toUpperCase()}`;
         
-        // Create Google Maps embed URL
+        deviceNameElement.textContent = device.deviceName;
+        deviceInfoElement.textContent = `${device.userName} â€¢ ${device.id} â€¢ ${device.status.toUpperCase()}`;
+        
+        
         const mapsUrl = `https://maps.google.com/maps?q=${device.location.lat},${device.location.lng}&hl=en&z=14&output=embed`;
         mapsIframe.src = mapsUrl;
         
-        // Show modal and prevent body scrolling
+        
         modal.classList.remove('hidden');
         document.body.classList.add('modal-open');
         
@@ -503,7 +503,7 @@ window.closeMapModal = function() {
             document.body.classList.remove('modal-open');
         }
         
-        // Clear iframe src to stop loading
+        
         if (mapsIframe) {
             mapsIframe.src = '';
         }
@@ -559,7 +559,7 @@ function renderDevices() {
                     </div>
                     
                     <div class="emergency-contact">
-                        <div class="emergency-title">🚨 Emergency Contact</div>
+                        <div class="emergency-title">ðŸš¨ Emergency Contact</div>
                         <div class="detail-row">
                             <span class="detail-label">Phone:</span>
                             <span class="detail-value">${device.emergencyContact.phone}</span>
@@ -602,7 +602,7 @@ function renderMapMarkers() {
     }
 }
 
-// Filter and Search Functions
+
 window.filterDevices = function() {
     try {
         const searchInput = document.getElementById('device-search');
@@ -630,7 +630,7 @@ window.filterDevices = function() {
     }
 };
 
-// Device Management Functions
+
 window.toggleDeviceStatus = function(deviceId) {
     try {
         console.log(`Toggling status for device: ${deviceId}`);
@@ -640,7 +640,7 @@ window.toggleDeviceStatus = function(deviceId) {
             device.status = newStatus;
             device.lastUpdate = new Date().toISOString();
             
-            // Update displays
+            
             updateDeviceStats();
             renderDevices();
             renderMapMarkers();
@@ -664,10 +664,10 @@ window.confirmDeleteDevice = function(deviceId) {
             if (confirmDialog && confirmText && confirmYes) {
                 confirmText.innerHTML = `Are you sure you want to permanently delete <strong>${device.deviceName}</strong>?<br>This action cannot be undone.`;
                 
-                // Remove existing click handlers
+                
                 confirmYes.onclick = null;
                 
-                // Add new click handler
+                
                 confirmYes.onclick = () => deleteDevice(deviceId);
                 
                 confirmDialog.classList.remove('hidden');
@@ -681,11 +681,11 @@ window.confirmDeleteDevice = function(deviceId) {
 window.deleteDevice = function(deviceId) {
     try {
         console.log(`Deleting device: ${deviceId}`);
-        // Remove device from arrays
+        
         allDevices = allDevices.filter(device => device.id !== deviceId);
         filteredDevices = filteredDevices.filter(device => device.id !== deviceId);
         
-        // Update display
+        
         updateDeviceStats();
         renderDevices();
         renderMapMarkers();
@@ -705,29 +705,29 @@ window.updateMap = function() {
         
         if (!mapGrid || !updateButton) return;
         
-        // Show loading state
+        
         mapGrid.classList.add('updating');
-        updateButton.textContent = '🔄 Updating...';
+        updateButton.textContent = 'ðŸ”„ Updating...';
         updateButton.disabled = true;
         
-        // Simulate API call delay
+        
         setTimeout(() => {
-            // Update last update times for active devices
+            
             allDevices.forEach(device => {
                 if (device.status === 'active') {
                     device.lastUpdate = new Date().toISOString();
-                    // Slightly randomize locations to simulate movement
+                    
                     device.location.lat += (Math.random() - 0.5) * 0.001;
                     device.location.lng += (Math.random() - 0.5) * 0.001;
                 }
             });
             
-            // Re-render components
-            filterDevices(); // This will update both devices and map
             
-            // Reset button state
+            filterDevices();
+            
+            
             mapGrid.classList.remove('updating');
-            updateButton.textContent = '🔄 Update Map';
+            updateButton.textContent = 'ðŸ”„ Update Map';
             updateButton.disabled = false;
             
             showMessage('Map updated successfully! Device locations refreshed.', 'success');
@@ -737,7 +737,7 @@ window.updateMap = function() {
     }
 };
 
-// Dialog Functions
+
 window.hideConfirmDialog = function() {
     try {
         const confirmDialog = document.getElementById('confirm-dialog');
@@ -749,7 +749,7 @@ window.hideConfirmDialog = function() {
     }
 };
 
-// Utility Functions
+
 function formatDate(dateString) {
     try {
         const date = new Date(dateString);
@@ -776,7 +776,7 @@ function showMessage(text, type = 'info') {
         messageText.innerHTML = text;
         overlay.classList.remove('hidden');
         
-        // Auto-hide success and info messages
+        
         if (type === 'success' || type === 'info') {
             setTimeout(() => {
                 hideMessage();
@@ -798,21 +798,21 @@ window.hideMessage = function() {
     }
 };
 
-// Auto-refresh functionality
+
 let autoRefreshInterval = null;
 
 function startAutoRefresh() {
     try {
         if (currentPage === 'dashboard' && currentUser) {
             autoRefreshInterval = setInterval(() => {
-                // Update timestamps for active devices
+                
                 allDevices.forEach(device => {
                     if (device.status === 'active' && Math.random() > 0.7) {
                         device.lastUpdate = new Date().toISOString();
                     }
                 });
                 
-                // Re-render if no filters are active
+                
                 const searchInput = document.getElementById('device-search');
                 const statusFilter = document.getElementById('status-filter');
                 
@@ -822,7 +822,7 @@ function startAutoRefresh() {
                 if (!searchTerm && !statusFilterValue) {
                     renderDevices();
                 }
-            }, 30000); // Update every 30 seconds
+            }, 30000);
         }
     } catch (error) {
         console.error('Error starting auto-refresh:', error);
@@ -840,17 +840,17 @@ function stopAutoRefresh() {
     }
 }
 
-// Event Listeners
+
 document.addEventListener('keydown', function(event) {
     try {
-        // ESC to close message overlay, confirm dialog, or maps modal
+        
         if (event.key === 'Escape') {
             hideMessage();
             hideConfirmDialog();
             closeMapModal();
         }
         
-        // Ctrl+/ for search focus (dashboard only)
+        
         if (event.ctrlKey && event.key === '/' && currentPage === 'dashboard') {
             event.preventDefault();
             const searchInput = document.getElementById('device-search');
@@ -863,7 +863,7 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// Page visibility handling
+
 document.addEventListener('visibilitychange', function() {
     try {
         if (document.hidden) {
@@ -876,7 +876,7 @@ document.addEventListener('visibilitychange', function() {
     }
 });
 
-// Clean up when leaving page
+
 window.addEventListener('beforeunload', function() {
     try {
         stopAutoRefresh();
@@ -885,13 +885,13 @@ window.addEventListener('beforeunload', function() {
     }
 });
 
-// Settings page functions
+
 window.changeLanguage = function(language) {
     try {
         currentLanguage = language;
         console.log('Language changed to:', language);
         showMessage(`Language changed to ${language}. (Note: Translation not implemented in demo)`, 'info');
-        // In a real app, this would trigger language change
+        
         localStorage.setItem('astra-language', language);
     } catch (error) {
         console.error('Error changing language:', error);
@@ -908,7 +908,7 @@ window.changeTheme = function(theme) {
         } else if (theme === 'light') {
             document.documentElement.setAttribute('data-color-scheme', 'light');
         } else {
-            // Auto - remove data attribute to use system preference
+            
             document.documentElement.removeAttribute('data-color-scheme');
         }
         
@@ -937,7 +937,7 @@ window.exportData = function(format) {
             showMessage('Data exported as JSON successfully!', 'success');
             
         } else if (format === 'csv') {
-            // Convert to CSV
+            
             const headers = ['ID', 'Device Name', 'User Name', 'User ID', 'Status', 'Latitude', 'Longitude', 'Last Update', 'Emergency Phone', 'Emergency Email'];
             const csvContent = [
                 headers.join(','),
@@ -967,7 +967,7 @@ window.exportData = function(format) {
             
         } else if (format === 'pdf') {
             showMessage('PDF export feature coming soon! For now, you can print this page to PDF.', 'info');
-            // In a real app, this would generate a PDF
+            
         }
         
     } catch (error) {
@@ -976,19 +976,19 @@ window.exportData = function(format) {
     }
 };
 
-// Load saved preferences on init
+
 window.addEventListener('DOMContentLoaded', function() {
     try {
-        // Load saved theme
+        
         const savedTheme = localStorage.getItem('astra-theme');
         if (savedTheme) {
             changeTheme(savedTheme);
-            // Update radio button
+            
             const themeRadio = document.querySelector(`input[name="theme"][value="${savedTheme}"]`);
             if (themeRadio) themeRadio.checked = true;
         }
         
-        // Load saved language
+        
         const savedLanguage = localStorage.getItem('astra-language');
         if (savedLanguage) {
             currentLanguage = savedLanguage;
@@ -999,3 +999,4 @@ window.addEventListener('DOMContentLoaded', function() {
         console.error('Error loading preferences:', error);
     }
 });
+
